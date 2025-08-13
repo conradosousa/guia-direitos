@@ -1,25 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screens/HomeScreen';
+import DireitosScreen from './screens/DireitosScreen';
+import SobreScreen from './screens/SobreScreen';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      
-      <Text>Bem-vindo ao seu Guia de Direitos e Beneficios </Text>
-
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Direitos" component={DireitosScreen} />
+        <Stack.Screen name="Sobre" component={SobreScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#c6f0f0ff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
