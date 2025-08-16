@@ -1,37 +1,14 @@
-import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
-
-const categorias = [
-	'Saúde',
-	'Educação',
-	'Trabalho',
-	'Direitos do Consumidor',
-];
-
-export default function HomeScreen({ navigation }) {
-	return (
-		<View style={styles.container}>
-			<Text style={styles.titulo}>Guia de Direitos e Benefícios</Text>
-			<Text style={styles.subtitulo}>Escolha uma categoria:</Text>
-			{categorias.map(cat => (
-				<View key={cat} style={styles.btnBox}>
-					<Button
-						title={cat}
-						color="#2563EB"
-						onPress={() => navigation.navigate('Direitos', { categoria: cat })}
-					/>
-				</View>
-			))}
-			<View style={{ marginTop: 32 }}>
-				<Button title="Sobre" onPress={() => navigation.navigate('Sobre')} />
-			</View>
-		</View>
-	);
-}
-
-const styles = StyleSheet.create({
-	container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff', padding: 24 },
-	titulo: { fontSize: 26, fontWeight: 'bold', marginBottom: 16, color: '#2563EB', textAlign: 'center' },
-	subtitulo: { fontSize: 18, marginBottom: 24, color: '#333', textAlign: 'center' },
-	btnBox: { width: '100%', marginBottom: 12 },
+import React from 'react';import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';export default function HomeScreen({ navigation }) {	return (		<View style={styles.container}>			<Text style={styles.titulo}>Guia de Direitos</Text>			<TouchableOpacity				style={styles.botao}				onPress={() => navigation.navigate('Direitos')}			>				<Text style={styles.textoBotao}>Ver Direitos</Text>			</TouchableOpacity>			<TouchableOpacity				style={styles.botao}				onPress={() => navigation.navigate('Sobre')}			>				<Text style={styles.textoBotao}>Sobre</Text>			</TouchableOpacity>		</View>	);}const styles = StyleSheet.create({	container: {		flex: 1,		backgroundColor: '#e3f2fd',		alignItems: 'center',		justifyContent: 'center',		padding: 24,	},	titulo: {		fontSize: 28,		fontWeight: 'bold',		color: '#1565c0',		marginBottom: 40,	},	botao: {
+		backgroundColor: '#1976d2',
+		paddingVertical: 16,
+		paddingHorizontal: 32,
+		borderRadius: 8,
+		marginBottom: 20,
+		elevation: 2,
+	},
+	textoBotao: {
+		color: '#fff',
+		fontSize: 18,
+		fontWeight: 'bold',
+	},
 });

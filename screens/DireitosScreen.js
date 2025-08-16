@@ -1,48 +1,23 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-const DIREITOS = {
-    Saúde: [
-        { id: '1', texto: 'Atendimento gratuito pelo SUS' },
-        { id: '2', texto: 'Vacinação obrigatória para crianças' },
-    ],
-    Educação: [
-        { id: '1', texto: 'Educação básica gratuita e obrigatória' },
-        { id: '2', texto: 'Transporte escolar para alunos de baixa renda' },
-    ],
-    Trabalho: [
-        { id: '1', texto: 'Carteira assinada é obrigatória' },
-        { id: '2', texto: 'Direito a férias e 13º salário' },
-    ],
-    'Direitos do Consumidor': [
-        { id: '1', texto: 'Produto com garantia mínima de 90 dias' },
-        { id: '2', texto: 'Direito a troca ou devolução em até 7 dias' },
-    ],
-};
-
-export default function TelaDireitos({ route }) {
+export default function DireitosScreen({ route }) {
+    // Pegando a categoria enviada pela HomeScreen
     const { categoria } = route.params;
-    const lista = DIREITOS[categoria] || [];
 
     return (
         <View style={styles.container}>
             <Text style={styles.titulo}>{categoria}</Text>
-            <FlatList
-                data={lista}
-                keyExtractor={item => item.id}
-                renderItem={({ item }) => (
-                    <View style={styles.item}>
-                        <Text style={styles.texto}>{item.texto}</Text>
-                    </View>
-                )}
-            />
+            <Text style={styles.texto}>
+                Aqui você poderá ver informações sobre os seus direitos relacionados a <Text style={styles.destaque}>{categoria}</Text>.
+            </Text>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, padding: 24, backgroundColor: '#fff' },
-    titulo: { fontSize: 24, fontWeight: 'bold', marginBottom: 12, color: '#2563EB' },
-    item: { backgroundColor: '#f0f4f7', padding: 15, borderRadius: 8, marginBottom: 10 },
-    texto: { fontSize: 16, color: '#333' },
+    container: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20, backgroundColor: '#fff' },
+    titulo: { fontSize: 24, fontWeight: 'bold', marginBottom: 20, color: '#2563EB' },
+    texto: { fontSize: 18, textAlign: 'center', color: '#333' },
+    destaque: { fontWeight: 'bold', color: '#111' },
 });

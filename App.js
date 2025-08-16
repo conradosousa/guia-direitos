@@ -11,9 +11,21 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Direitos" component={DireitosScreen} />
-        <Stack.Screen name="Sobre" component={SobreScreen} />
+        <Stack.Screen 
+          name="Home" 
+          component={HomeScreen} 
+          options={{ title: 'Início' }}
+        />
+        <Stack.Screen 
+          name="Direitos" 
+          component={DireitosScreen} 
+          options={{ title: 'Direitos' }}
+        />
+        <Stack.Screen 
+          name="Sobre" 
+          component={SobreScreen} 
+          options={{ title: 'Sobre o App' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

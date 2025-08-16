@@ -8,7 +8,7 @@ const CATEGORIAS = [
     { id: '4', nome: 'Direitos do Consumidor' },
 ];
 
-export default function TelaInicial({ navigation }) {
+export default function HomeScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <FlatList
@@ -17,7 +17,7 @@ export default function TelaInicial({ navigation }) {
                 renderItem={({ item }) => (
                     <TouchableOpacity
                         style={styles.botao}
-                        onPress={() => navigation.navigate('TelaDireitos', { categoria: item.nome })}
+                        onPress={() => navigation.navigate('Direitos', { categoria: item.nome })}
                     >
                         <Text style={styles.textoBotao}>{item.nome}</Text>
                     </TouchableOpacity>
