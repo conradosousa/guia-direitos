@@ -11,7 +11,7 @@ const CATEGORIAS = [
 export default function HomeScreen({ navigation }) {
     return (
         <View style={styles.container}>
-            <FlatList
+            <FlatList  
                 data={CATEGORIAS}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => (
