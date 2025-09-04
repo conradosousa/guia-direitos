@@ -1,33 +1,51 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
-import HomeScreen from "./screens/HomeScreen";
+import { createStackNavigator } from "@react-navigation/stack";
+const Stack = createStackNavigator();
+import { StyleSheet } from "react-native";
 import CadastroScreen from "./screens/CadastroScreen";
-import DireitosScreen from "./screens/DireitosScreen";
+import ResultadoScreen from "./screens/ResultadoScreen";
+import LoginScreen from "./screens/LoginScreen";
+import CadastroUsuarioScreen from "./screens/CadastroUsuarioScreen";
 
-const Stack = createNativeStackNavigator();
+// ...existing code...
 
+// App principal
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Cadastro">
-        <Stack.Screen 
-          name="Cadastro" 
-          component={CadastroScreen} 
-          options={{ title: "Cadastro de Usuário" }}
-        />
-        <Stack.Screen 
-          name="Home" 
-          component={HomeScreen} 
-          options={{ title: "Página Inicial" }}
-        />
-        <Stack.Screen 
-          name="Direitos" 
-          component={DireitosScreen} 
-          options={{ title: "Direitos" }}
-        />
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="CadastroUsuario" component={CadastroUsuarioScreen} options={{ title: "Cadastro de Usuário" }} />
+        <Stack.Screen name="Cadastro" component={CadastroScreen} />
+        <Stack.Screen name="Resultado" component={ResultadoScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
+// Estilos
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+    backgroundColor: "#f5f5f5",
+  },
+  titulo: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+  input: {
+    width: "100%",
+    height: 40,
+    borderColor: "#ccc",
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+    backgroundColor: "#fff",
+  },
+});
